@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { FormGroups } from './components/FormGroups'
 import { PreviewList } from './components/PreviewList'
 import { LogList } from './components/LogList'
+import { ProgressTracker } from './components/ProgressTracker'
 
 
 export const LearningLog = () => {
@@ -44,6 +45,7 @@ export const LearningLog = () => {
       <PreviewList items={InputItems} />
       <button onClick={() => addLearningLog({ records, title: logTitle, time: logTime })}>登録</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
+      <ProgressTracker title="学習時間" unit="h" max="1000" items={records} />
       <LogList logs={records} />
     </>
   )
