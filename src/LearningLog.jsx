@@ -7,6 +7,7 @@ import { LogList } from './components/LogList'
 export const LearningLog = () => {
   const [logTitle, setLogTitle] = useState('')
   const [logTime, setLogTime] = useState(0)
+  const [records, setRecords] = useState([]);
 
   const onChangeLogTitle = (e) => {
     setLogTitle(e.target.value)
@@ -21,16 +22,18 @@ export const LearningLog = () => {
     { label: "学習時間", key: "time", type: "number", placeholder: "学習時間を入力してください", value: logTime, onChange: onChangeLogTime }
   ]
 
-  const records = [
-    { title: "勉強の記録1", time: 1 },
-    { title: "勉強の記録2", time: 3 },
-    { title: "勉強の記録3", time: 5 }
-  ]
+  const addLearningLog = ({ records, title, time }) => {
+    setRecords([...records, { title, time }])
+    setLogTitle('')
+    setLogTime(0)
+  }
+
   return (
     <>
       <h1>学習記録</h1>
       <FormGroups items={InputItems} />
       <PreviewList items={InputItems} />
+      <button onClick={() => addLearningLog({ records, title: logTitle, time: logTime })}>登録</button>
       <LogList logs={records} />
     </>
   )
