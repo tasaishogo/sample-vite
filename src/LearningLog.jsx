@@ -45,7 +45,7 @@ export const LearningLog = () => {
       <PreviewList items={InputItems} />
       <button onClick={() => addLearningLog({ records, title: logTitle, time: logTime })}>登録</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <ProgressTracker title="学習時間" unit="h" max="1000" items={records} />
+      <ProgressTracker title="学習時間" unit="h" max="1000" items={records} target_key="time" />
       <LogList logs={records} />
     </>
   )
