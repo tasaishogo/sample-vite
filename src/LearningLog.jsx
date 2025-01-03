@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { LogList } from './components/LogList'
 
 
 export const LearningLog = () => {
@@ -10,6 +11,7 @@ export const LearningLog = () => {
   return (
     <>
       <h1>学習記録</h1>
+      <LogList logs={records} />
     </>
   )
 }
