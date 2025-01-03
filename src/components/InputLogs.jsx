@@ -30,6 +30,10 @@ export const InputLogs = (props) => {
                     <input style={styles.input} id="time" type="number" placeholder='学習時間を入力してください' value={logTime} onChange={onChangeLogTime} min="0" step="0.5" />
                 </div >
             </div>
+            <div>
+                <p>入力されている学習内容：{logTitle}</p>
+                <p>入力されている時間：{logTime}</p>
+            </div>
             <button>追加</button>
         </div>
     )
