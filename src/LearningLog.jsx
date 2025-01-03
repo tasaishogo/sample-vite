@@ -8,6 +8,7 @@ export const LearningLog = () => {
   const [logTitle, setLogTitle] = useState('')
   const [logTime, setLogTime] = useState(0)
   const [records, setRecords] = useState([]);
+  const [error, setError] = useState("");
 
   const onChangeLogTitle = (e) => {
     setLogTitle(e.target.value)
@@ -23,9 +24,17 @@ export const LearningLog = () => {
   ]
 
   const addLearningLog = ({ records, title, time }) => {
+    if (title === '') {
+      setError('学習項目を入力してください')
+      return
+    } else if (time === 0 || time === '') {
+      setError('学習時間を入力してください')
+      return
+    }
     setRecords([...records, { title, time }])
     setLogTitle('')
     setLogTime(0)
+    error !== '' && setError('');
   }
 
   return (
@@ -34,6 +43,7 @@ export const LearningLog = () => {
       <FormGroups items={InputItems} />
       <PreviewList items={InputItems} />
       <button onClick={() => addLearningLog({ records, title: logTitle, time: logTime })}>登録</button>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <LogList logs={records} />
     </>
   )
