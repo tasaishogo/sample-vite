@@ -20,14 +20,16 @@ export const InputLogs = (props) => {
     const { logTitle, logTime, onChangeLogTitle, onChangeLogTime } = props
     return (
         <div>
-            <div style={styles.formGroup}>
-                <label style={styles.label} htmlFor="title">学習項目</label>
-                <input style={styles.input} id="title" type="text" placeholder='学習項目の概要を入力してください' value={logTitle} onChange={onChangeLogTitle} />
-            </div >
-            <div style={styles.formGroup}>
-                <label style={styles.label} htmlFor="time">学習時間</label>
-                <input style={styles.input} id="time" type="number" placeholder='学習時間を入力してください' value={logTime} onChange={onChangeLogTime} />
-            </div >
+            <div>
+                <div style={styles.formGroup}>
+                    <label style={styles.label} htmlFor="title">学習項目</label>
+                    <input style={styles.input} id="title" type="text" placeholder='学習項目の概要を入力してください' value={logTitle} onChange={onChangeLogTitle} />
+                </div >
+                <div style={styles.formGroup}>
+                    <label style={styles.label} htmlFor="time">学習時間</label>
+                    <input style={styles.input} id="time" type="number" placeholder='学習時間を入力してください' value={logTime} onChange={onChangeLogTime} min="0" step="0.5" />
+                </div >
+            </div>
             <button>追加</button>
         </div>
     )
